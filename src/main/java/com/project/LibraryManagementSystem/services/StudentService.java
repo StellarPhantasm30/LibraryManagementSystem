@@ -15,4 +15,9 @@ public class StudentService {
 	public void create(Student student) {
 		studentRepository.save(student);
 	}
+
+	public Student find(int studentId) {
+		return studentRepository.findById(studentId).orElse(null);
+
+	}
 }
