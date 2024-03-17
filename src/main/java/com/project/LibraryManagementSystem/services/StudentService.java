@@ -18,6 +18,9 @@ public class StudentService {
 
 	public Student find(int studentId) {
 		return studentRepository.findById(studentId).orElse(null);
+	}
 
+	public void delete(int studentId) {
+		studentRepository.deleteById(studentId);
 	}
 }

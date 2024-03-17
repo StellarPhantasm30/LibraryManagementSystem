@@ -29,7 +29,7 @@ public class StudentController {
 
 	@DeleteMapping
 	public void deleteStudent(@RequestParam("id") int studentId) {
-
+		studentService.delete(studentId);
 	}
 
 }
