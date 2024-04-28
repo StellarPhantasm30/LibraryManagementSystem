@@ -1,9 +1,11 @@
-package com.project.LibraryManagementSystem.models;
+package com.project.library_management_system.models;
 
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,5 +38,6 @@ public class Admin {
 	private Date createdOn;
 
 	@OneToMany(mappedBy = "admin")
+	@JsonIgnoreProperties({ "admin" })
 	private List<Transaction> transactionList;
 }

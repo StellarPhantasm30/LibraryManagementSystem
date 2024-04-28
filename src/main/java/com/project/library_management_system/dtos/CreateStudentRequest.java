@@ -1,6 +1,6 @@
-package com.project.LibraryManagementSystem.dtos;
+package com.project.library_management_system.dtos;
 
-import com.project.LibraryManagementSystem.models.Student;
+import com.project.library_management_system.models.Student;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

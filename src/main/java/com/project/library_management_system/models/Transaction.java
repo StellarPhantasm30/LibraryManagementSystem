@@ -1,19 +1,20 @@
-package com.project.LibraryManagementSystem.models;
+package com.project.library_management_system.models;
 
 import java.util.Date;
-import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,16 +25,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Book {
+public class Transaction {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private String name;
+	private String txnId;
 
-	@Enumerated // (value = EnumType.STRING)
-	private Genre genre;
+	@Enumerated(EnumType.STRING)
+	private TransactionStatus transactionStatus;
+
+	@Enumerated(EnumType.STRING)
+	private TransactionType transactionType;
 
 	@CreationTimestamp
 	private Date createdOn;
@@ -41,14 +45,21 @@ public class Book {
 	@UpdateTimestamp
 	private Date updatedOn;
 
-	@ManyToOne
-	@JoinColumn
-	private Author my_author;
+	private Integer fine;
 
 	@ManyToOne
 	@JoinColumn
+	@JsonIgnoreProperties({ "transactionList" })
+	private Book book;
+
+	@ManyToOne
+	@JoinColumn
+	@JsonIgnoreProperties({ "transactionList" })
 	private Student student;
 
-	@OneToMany(mappedBy = "book")
-	private List<Transaction> transactionList;
+	@ManyToOne
+	@JoinColumn
+	@JsonIgnoreProperties({ "transactionList" })
+	private Admin admin;
+
 }

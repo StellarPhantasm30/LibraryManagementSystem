@@ -1,10 +1,12 @@
-package com.project.LibraryManagementSystem.models;
+package com.project.library_management_system.models;
 
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,8 +45,10 @@ public class Student {
 	private Date updatedOn;
 
 	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+	@JsonIgnoreProperties({ "student" })
 	private List<Book> bookList;
 
 	@OneToMany(mappedBy = "student")
+	@JsonIgnoreProperties({ "student" })
 	private List<Transaction> transactionList;
 }

@@ -1,9 +1,11 @@
-package com.project.LibraryManagementSystem.models;
+package com.project.library_management_system.models;
 
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -63,6 +65,7 @@ public class Author {
 	 * (one Author can have many Books). Hibernate maps this association using the
 	 * "my_author" field in the Book entity.
 	 */
-	@OneToMany(mappedBy = "my_author")
+	@OneToMany(mappedBy = "myAuthor")
+	@JsonIgnoreProperties({ "my_author" })
 	private List<Book> bookList;
 }

@@ -1,16 +1,18 @@
-package com.project.LibraryManagementSystem.services;
+package com.project.library_management_system.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.LibraryManagementSystem.models.Student;
-import com.project.LibraryManagementSystem.repositories.StudentRepository;
+import com.project.library_management_system.models.Student;
+import com.project.library_management_system.repositories.StudentRepository;
 
 @Service
 public class StudentService {
 
-	@Autowired
-	StudentRepository studentRepository;
+	private final StudentRepository studentRepository;
+
+	public StudentService(StudentRepository studentRepository){
+		this.studentRepository = studentRepository;
+	}
 
 	public void create(Student student) {
 		studentRepository.save(student);

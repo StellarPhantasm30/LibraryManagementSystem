@@ -1,4 +1,4 @@
-package com.project.LibraryManagementSystem.models;
+package com.project.library_management_system.models;
 
 public enum TransactionStatus {
 

@@ -1,4 +1,4 @@
-package com.project.LibraryManagementSystem.models;
+package com.project.library_management_system.models;
 
 /**
  * This enum represents the different genres a book can belong to in the Library
